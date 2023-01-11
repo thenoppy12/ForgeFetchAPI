@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 
 
-def scrape(url: str):
+def scrape(url: str) -> dict[str, list[str]]:
     version_count = 0
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
