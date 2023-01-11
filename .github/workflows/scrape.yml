@@ -27,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: forge-versions.json
-          path: ${{github.workspace}}/
+          path: ${{github.workspace}}/forge-versions.json
