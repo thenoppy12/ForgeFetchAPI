@@ -1,8 +1,8 @@
-# Forge Version API
+# [Forge Version API](https://mrnavastar.github.io/ForgeVersionAPI/)
 #### Version 1.0 - Created by MrNavaStar
 
 This api provides a simple way to get information about minecraft forge
-installer versions. This information is provided via the verions endpoint.
+installer versions. This information is provided via the [verions](https://mrnavastar.github.io/ForgeVersionAPI/forge-versions.json) endpoint.
 
 ## Important Note!
 If you wish to automate the forge install process, please consider supporting
