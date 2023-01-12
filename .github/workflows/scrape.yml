@@ -15,7 +15,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  scrape-latest:
+  scrape-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -34,15 +38,9 @@ jobs:
         run: python scraper.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
-          path: ${{github.workspace}}/web
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        with:
-          path: '.'
+          path: .web
 
       - name: Deploy to GitHub Pages
         id: deployment
