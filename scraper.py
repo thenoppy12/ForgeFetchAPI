@@ -51,5 +51,5 @@ def scrape(url: str):
 
 if __name__ == '__main__':
     data = scrape("https://files.minecraftforge.net/net/minecraftforge/forge/")
-    with open("forge-versions.json", "w") as file:
+    with open("web/forge-versions.json", "w") as file:
         file.write(json.dumps(data, indent=4))

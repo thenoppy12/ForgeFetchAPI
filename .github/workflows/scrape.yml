@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: forge-versions.zip
-          path: ${{github.workspace}}/forge-versions.json
+          path: ${{github.workspace}}/web
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
