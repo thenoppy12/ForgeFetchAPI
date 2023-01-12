@@ -16,10 +16,6 @@ concurrency:
 
 jobs:
   scrape-latest:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
 
     steps:
@@ -36,6 +32,12 @@ jobs:
 
       - name: Run Scraper
         run: python scraper.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: forge-versions.zip
+          path: ${{github.workspace}}/forge-versions.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
