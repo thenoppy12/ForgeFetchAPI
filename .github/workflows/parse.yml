@@ -1,4 +1,4 @@
-name: Scrape and Deploy
+name: Parse and Deploy
 
 on:
   schedule:
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  scrape-and-deploy:
+  parse-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -35,7 +35,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Scraper
-        run: python scraper.py
+        run: python parse.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
