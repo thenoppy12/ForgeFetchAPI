@@ -15,33 +15,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  parse-and-deploy:
+  fetch-n-deploy:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: windows-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Set up Python
-        uses: actions/setup-python@v4.4.0
+        uses: actions/setup-python@v5.5.0
         with:
           python-version: '3.11.6'
-
       - name: Install requirements
         run: pip install -r requirements.txt
-
       - name: Run Scraper
         run: python parse.py
-
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{github.workspace}}/web
-
+          path: '${{github.workspace}}/web'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
+    
+  
+  
