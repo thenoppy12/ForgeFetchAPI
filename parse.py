@@ -52,5 +52,5 @@ if __name__ == '__main__':
     promotions_url = "https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json"
 
     data = parse(xml_url, promotions_url)
-    with open("web/forge-versions.json", "w") as file:
+    with open("web/version.json", "w") as file:
         file.write(json.dumps(data, indent=4))
